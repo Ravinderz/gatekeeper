@@ -40,21 +40,24 @@ const History = () => {
     }
 
     return (
-        <SafeAreaView className="bg-white h-full">
+        <SafeAreaView className="bg-white h-full px-8">
+            <Text className="text-xl font-opensans-semibold my-3">
+                Visitor's History
+            </Text>
             <FlatList data={getUniqueDates(DATA)} renderItem={({item}) =>
 
-                <View className="ml-6 mr-6">
-                <View><Text className="text-lg text-grey-800 font-opensans-medium m-2">{item}</Text></View>
+                <View>
+                <View><Text className="text-lg text-grey-800 m-2 font-medium font-opensans-semibold">{item}</Text></View>
                 <FlatList
                 data={DATA.filter(data => data.date === item)}
                       renderItem={({item}) => (
-                          <View className="h-18 flex-row justify-between m-2 font-light">
+                          <View className={`h-18 flex-row justify-between m-2 rounded-md p-4 ${item.status === "Rejected" ? "bg-mild-red" : "bg-mild-green"}`}>
                               <View className="flex-grow p-2">
-                                  <Text className="text-lg mb">{item.name}</Text>
-                                  <Text className="text-md">{item.purpose}</Text>
+                                  <Text className={`text-lg font-opensans-medium ${item.status === "Rejected" ? "text-gray-50" : "text-gray-800"}`}>{item.name}</Text>
+                                  <Text className={`text-md ${item.status === "Rejected" ? "text-gray-300" : "text-gray-600"}`}>{item.purpose}</Text>
                               </View>
-                              <View className="p-4 w-36 flex items-center justify-center">
-                                <Text className="text-lg text-gray-800">{item.status}</Text>
+                              <View className="p-4">
+                                <Text className={`text-lg font-normal ${item.status === "Rejected" ? "text-gray-50" : "text-gray-800"}`}>{item.status}</Text>
                               </View>
                           </View>
                       )}
@@ -62,10 +65,7 @@ const History = () => {
             >
             </FlatList>
                 </View>
-
-
             }>
-
             </FlatList>
         </SafeAreaView>
     )
