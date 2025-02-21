@@ -75,18 +75,18 @@ const Home = () => {
                     {
                         pendingRequests.map((item) => (
                             <View key={item.name} className="my-2 bg-gray-100 p-4 rounded-xl">
-
+                                {/*add tags below the Name, phone and purpose*/}
                                 <View className="flex flex-row justify-between mb-2">
                                     <View>
-                                        <Text className="text-lg font-opensans-medium">{item.name}</Text>
+                                        <Text className="text-lg font-opensans-medium mb-1">{item.name}</Text>
                                         <Text className="text-gray-400 text-md">{item.purpose}</Text>
                                     </View>
                                     <View>
-                                        <Text className="text-gray-600 text-sm p-2 bg-orange-300 rounded-2xl">{item.status}</Text>
+                                        <Text className="text-gray-600 text-sm p-2 px-4 bg-orange-300 rounded-2xl">{item.status}</Text>
                                     </View>
                                 </View>
 
-                                <View className="flex flex-row justify-between w-full">
+                                <View className="flex flex-row justify-between w-full mt-4 pb-2">
                                     <View className="w-[48%]">
                                         <TouchableOpacity className="bg-mild-green p-4 rounded-lg">
                                             <Text className="text-gray-800 text-center font-opensans-medium">Approve</Text>

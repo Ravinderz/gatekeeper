@@ -41,6 +41,7 @@ const History = () => {
 
     return (
         <SafeAreaView className="bg-white h-full px-8">
+            {/*update the bg and add left or right border to show its approved / rejected*/}
             <Text className="text-xl font-opensans-semibold my-3">
                 Visitor's History
             </Text>
