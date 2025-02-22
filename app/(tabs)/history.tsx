@@ -1,6 +1,7 @@
-import { FlatList, Text, View} from 'react-native'
+import {FlatList, ScrollView, Text, View} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
+import HistoryListItem from "@/app/components/HistoryListItem";
 
 const History = () => {
 
@@ -32,6 +33,42 @@ const History = () => {
             date: "15/12/2022",
             status: "Approved",
             purpose: "Grocery Delivery"
+        },
+        {
+            name: "Swiggy Delivery",
+            date: "15/12/2022",
+            status: "Rejected",
+            purpose: "Food delivery"
+        },
+        {
+            name: "Blinkit Delivery",
+            date: "15/12/2022",
+            status: "Approved",
+            purpose: "Grocery Delivery"
+        },
+        {
+            name: "Swiggy Delivery",
+            date: "15/12/2022",
+            status: "Rejected",
+            purpose: "Food delivery"
+        },
+        {
+            name: "Blinkit Delivery",
+            date: "15/12/2022",
+            status: "Approved",
+            purpose: "Grocery Delivery"
+        },
+        {
+            name: "Swiggy Delivery",
+            date: "15/12/2022",
+            status: "Rejected",
+            purpose: "Food delivery"
+        },
+        {
+            name: "Blinkit Delivery",
+            date: "15/12/2022",
+            status: "Approved",
+            purpose: "Grocery Delivery"
         }
     ]
 
@@ -40,34 +77,28 @@ const History = () => {
     }
 
     return (
-        <SafeAreaView className="bg-white h-full px-8">
+        <SafeAreaView className="bg-white flex-1 h-full px-4">
             {/*update the bg and add left or right border to show its approved / rejected*/}
-            <Text className="text-xl font-opensans-semibold my-3">
-                Visitor's History
-            </Text>
-            <FlatList data={getUniqueDates(DATA)} renderItem={({item}) =>
-
-                <View>
-                <View><Text className="text-lg text-grey-800 m-2 font-medium font-opensans-semibold">{item}</Text></View>
-                <FlatList
-                data={DATA.filter(data => data.date === item)}
-                      renderItem={({item}) => (
-                          <View className={`h-18 flex-row justify-between m-2 rounded-md p-4 ${item.status === "Rejected" ? "bg-mild-red" : "bg-mild-green"}`}>
-                              <View className="flex-grow p-2">
-                                  <Text className={`text-lg font-opensans-medium ${item.status === "Rejected" ? "text-gray-50" : "text-gray-800"}`}>{item.name}</Text>
-                                  <Text className={`text-md ${item.status === "Rejected" ? "text-gray-300" : "text-gray-600"}`}>{item.purpose}</Text>
-                              </View>
-                              <View className="p-4">
-                                <Text className={`text-lg font-normal ${item.status === "Rejected" ? "text-gray-50" : "text-gray-800"}`}>{item.status}</Text>
-                              </View>
-                          </View>
-                      )}
-                      keyExtractor={item => item.name}
-            >
-            </FlatList>
-                </View>
-            }>
-            </FlatList>
+            <View className="h-full flex-1">
+                <Text className="text-xl font-opensans-semibold my-3">
+                    Visitor's History
+                </Text>
+                <FlatList data={getUniqueDates(DATA)} renderItem={({item}) =>
+                    <View className="h-full flex-1" >
+                    <View><Text className="text-lg text-grey-800 m-2 font-medium font-opensans-semibold">{item}</Text></View>
+                    <FlatList
+                        data={DATA.filter(data => data.date === item)}
+                        renderItem={({item}) => (<HistoryListItem item={item}/>)}
+                        keyExtractor={item => item.name}
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{paddingBottom: 120}}
+                        >
+                    </FlatList>
+                    </View>
+                } showsVerticalScrollIndicator={false}
+                 contentContainerStyle={{paddingBottom: 120}}>
+                </FlatList>
+            </View>
         </SafeAreaView>
     )
 }

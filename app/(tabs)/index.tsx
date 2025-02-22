@@ -1,7 +1,9 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native'
+import {View, Text, Image, ScrollView, FlatList} from 'react-native'
 import React from 'react'
 import '../globals.css'
 import {SafeAreaView} from "react-native-safe-area-context";
+import PendingListItem from "@/app/components/PendingListItem";
+
 
 const Home = () => {
 
@@ -40,7 +42,7 @@ const Home = () => {
     ]
 
     return (
-        <SafeAreaView className="flex-1 px-8 bg-white h-full">
+        <SafeAreaView className="flex-1 px-4 bg-white h-full">
             <View className="flex-row">
                 <Image source={require('../../assets/images/avatar.png')} className="w-16 h-16 my-4 rounded-full" />
                 <View className="ml-4 flex justify-center">
@@ -66,42 +68,16 @@ const Home = () => {
                 }
 
             </View >
-            <View>
+            <View className="flex-1 h-full">
                 <Text className="text-xl font-opensans-semibold my-3">
                     Pending Requests
                 </Text>
-                <View className="">
-
-                    {
-                        pendingRequests.map((item) => (
-                            <View key={item.name} className="my-2 bg-gray-100 p-4 rounded-xl">
-                                {/*add tags below the Name, phone and purpose*/}
-                                <View className="flex flex-row justify-between mb-2">
-                                    <View>
-                                        <Text className="text-lg font-opensans-medium mb-1">{item.name}</Text>
-                                        <Text className="text-gray-400 text-md">{item.purpose}</Text>
-                                    </View>
-                                    <View>
-                                        <Text className="text-gray-600 text-sm p-2 px-4 bg-orange-300 rounded-2xl">{item.status}</Text>
-                                    </View>
-                                </View>
-
-                                <View className="flex flex-row justify-between w-full mt-4 pb-2">
-                                    <View className="w-[48%]">
-                                        <TouchableOpacity className="bg-mild-green p-4 rounded-lg">
-                                            <Text className="text-gray-800 text-center font-opensans-medium">Approve</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                    <View className="w-[48%]">
-                                    <TouchableOpacity className="bg-mild-red p-4 rounded-lg">
-                                        <Text className="text-white text-center font-opensans-medium">Reject</Text>
-                                    </TouchableOpacity>
-                                    </View>
-                                </View>
-                            </View>
-                        ))
-                    }
-                </View >
+                <FlatList
+                    data={pendingRequests}
+                    renderItem={({item}) => <PendingListItem key={item.name} item={item}/>}
+                    showsVerticalScrollIndicator={false}
+                    contentContainerStyle={{paddingBottom: 120}}
+                />
             </View>
         </SafeAreaView>
     )

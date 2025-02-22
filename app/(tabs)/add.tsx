@@ -21,7 +21,7 @@ const Add = () => {
     }
 
     return (
-        <SafeAreaView className="bg-white h-full flex justify-between px-8 ">
+        <SafeAreaView className="bg-white h-full flex justify-between px-4 ">
             {/*<Text>horizontal scroll calendar here</Text>*/}
            <View className="mt-6 mb-6">
 
@@ -47,8 +47,8 @@ const Add = () => {
             />
            </View>
 
-            <TouchableOpacity className="h-20 bg-primary-300 flex items-center justify-center mb-28 rounded-md">
-                <Text className="text-white font-opensans-medium text-xl">Add</Text>
+            <TouchableOpacity className="h-16 bg-primary-300 flex items-center justify-center mb-28 rounded-md">
+                <Text className="text-white font-opensans-medium text-lg">Add</Text>
             </TouchableOpacity>
         </SafeAreaView>
     )

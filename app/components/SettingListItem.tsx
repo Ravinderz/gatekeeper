@@ -15,7 +15,7 @@ const SettingListItem = ({icon,name, iconProvider = "material"}: SettingListItem
             <View className="flex flex-row items-center">
                 {iconProvider === "material" ? <MaterialIcons name={icon} size={26} color="black" className="mr-6"/>
                  : <AntDesign name={icon} size={26} color="black" className="mr-6" />}
-                <Text className="text-xl font-opensans-semibold my-4">
+                <Text className="text-lg font-opensans-semibold my-4">
                     {name}
                 </Text>
             </View>

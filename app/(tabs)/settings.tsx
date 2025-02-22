@@ -5,7 +5,7 @@ import SettingListItem from "@/app/components/SettingListItem";
 
 const Settings = () => {
     return (
-        <SafeAreaView className="bg-white h-full px-8">
+        <SafeAreaView className="bg-white h-full px-4">
             {/*<Text className="text-xl font-opensans-semibold my-3">*/}
             {/*    Settings*/}
             {/*</Text>*/}
