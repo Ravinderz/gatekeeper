@@ -1,21 +1,35 @@
 import {View, Text} from 'react-native'
 import React from 'react'
+import convertDate from "@/app/components/DateHelper";
 
-const HistoryListItem = (props) => {
+type HistoryListItemProps = {
+    item: {
+        id?: string,
+        name: string,
+        date: string,
+        phone?: string,
+        purpose: string,
+        status: string
+    }
+}
+
+const HistoryListItem = (props: HistoryListItemProps) => {
     return (
-        <View
-            className={`h-18 flex-row justify-between m-2 rounded-md p-4 ${props.item.status === "Rejected" ? "bg-mild-red" : "bg-mild-green"}`}>
-            <View className="flex-grow p-2">
-                <Text
-                    className={`text-lg font-opensans-medium ${props.item.status === "Rejected" ? "text-gray-50" : "text-gray-800"}`}>{props.item.name}</Text>
-                <Text
-                    className={`text-md ${props.item.status === "Rejected" ? "text-gray-300" : "text-gray-600"}`}>{props.item.purpose}</Text>
+        <View className={`m-2 rounded-md p-4 bg-primary-mild`}>
+            <View className="flex flex-row justify-between mb-2 w-full">
+            <View>
+                <Text className="text-lg font-opensans-medium mb-1">{props.item.name}</Text>
+                <Text className="text-gray-400 text-md">{convertDate(props.item.date)}</Text>
             </View>
-            <View className="p-4">
-                <Text
-                    className={`text-lg font-normal ${props.item.status === "Rejected" ? "text-gray-50" : "text-gray-800"}`}>{props.item.status}</Text>
+            <View>
+                <Text className={` text-sm p-2 px-4 ${props.item.status === "Approved" ? "bg-mild-green text-gray-600" : "bg-mild-red text-gray-100"}  rounded-2xl`}>{props.item.status}</Text>
+            </View>
+            </View>
+            <View>
+                <Text className="text-gray-500 text-md">{props.item.purpose}</Text>
             </View>
         </View>
+
     )
 }
 export default HistoryListItem

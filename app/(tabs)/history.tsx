@@ -1,7 +1,8 @@
-import {FlatList, ScrollView, Text, View} from 'react-native'
+import {FlatList, Text, View} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import HistoryListItem from "@/app/components/HistoryListItem";
+import convertDate from "@/app/components/DateHelper";
 
 const History = () => {
 
@@ -33,46 +34,10 @@ const History = () => {
             date: "15/12/2022",
             status: "Approved",
             purpose: "Grocery Delivery"
-        },
-        {
-            name: "Swiggy Delivery",
-            date: "15/12/2022",
-            status: "Rejected",
-            purpose: "Food delivery"
-        },
-        {
-            name: "Blinkit Delivery",
-            date: "15/12/2022",
-            status: "Approved",
-            purpose: "Grocery Delivery"
-        },
-        {
-            name: "Swiggy Delivery",
-            date: "15/12/2022",
-            status: "Rejected",
-            purpose: "Food delivery"
-        },
-        {
-            name: "Blinkit Delivery",
-            date: "15/12/2022",
-            status: "Approved",
-            purpose: "Grocery Delivery"
-        },
-        {
-            name: "Swiggy Delivery",
-            date: "15/12/2022",
-            status: "Rejected",
-            purpose: "Food delivery"
-        },
-        {
-            name: "Blinkit Delivery",
-            date: "15/12/2022",
-            status: "Approved",
-            purpose: "Grocery Delivery"
         }
     ]
 
-    const getUniqueDates = (DATA) => {
+    const getUniqueDates = (DATA: any[]) => {
         return [...new Set(DATA.map(item => item.date))];
     }
 
@@ -85,7 +50,7 @@ const History = () => {
                 </Text>
                 <FlatList data={getUniqueDates(DATA)} renderItem={({item}) =>
                     <View className="h-full flex-1" >
-                    <View><Text className="text-lg text-grey-800 m-2 font-medium font-opensans-semibold">{item}</Text></View>
+                    <View><Text className="text-lg text-grey-800 m-2 font-medium font-opensans-semibold">{convertDate(item)}</Text></View>
                     <FlatList
                         data={DATA.filter(data => data.date === item)}
                         renderItem={({item}) => (<HistoryListItem item={item}/>)}

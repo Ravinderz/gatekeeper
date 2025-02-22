@@ -1,4 +1,4 @@
-import {View, Text, Image, ScrollView, FlatList} from 'react-native'
+import {View, Text, Image,  FlatList} from 'react-native'
 import React from 'react'
 import '../globals.css'
 import {SafeAreaView} from "react-native-safe-area-context";
@@ -6,6 +6,8 @@ import PendingListItem from "@/app/components/PendingListItem";
 
 
 const Home = () => {
+
+
 
     const visitorStatics = [
         {
@@ -37,7 +39,7 @@ const Home = () => {
             name: "Amazon Delivery",
             date: "13/12/2022",
             status: "Pending",
-            purpose: "Parcel"
+            purpose: "Parcel delivery for the customer. Previous delivery was rejected. Need to reschedule the delivery"
         },
     ]
 

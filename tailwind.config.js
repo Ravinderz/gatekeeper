@@ -17,12 +17,15 @@ module.exports = {
           100: "#2F33800A",
           200: "#2F33801A",
           300: "#2F3380",
+          400: "#e0e1f4"
         },
         accent: {
           100: "#D5D6E6"
         },
         "mild-green": "#8EB486",
         "mild-red": "#D2665A",
+        "primary-mild": "#e9e9f7",
+
         black: {
           DEFAULT: "#000000",
           100: "#8C8E98",
@@ -30,7 +33,6 @@ module.exports = {
           300: "#191D31",
 
         },
-        danger: "#D92D20"
       }
     },
   },
