@@ -34,13 +34,22 @@
         }
       ],
       "expo-asset",
-      ["expo-font",
+      [
+        "expo-font",
         {
-          "fonts": ["./assets/fonts/OpenSans-Regular.ttf",
+          "fonts": [
+            "./assets/fonts/OpenSans-Regular.ttf",
             "./assets/fonts/OpenSans-Light.ttf",
             "./assets/fonts/OpenSans-Bold.ttf",
             "./assets/fonts/OpenSans-Medium.ttf",
-            ",./assets/fonts/OpenSans-SemiBold.ttf"]
+            ",./assets/fonts/OpenSans-SemiBold.ttf"
+          ]
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow Gatekeeper to use biometric authentication."
         }
       ]
     ],

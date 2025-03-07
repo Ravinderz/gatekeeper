@@ -2,9 +2,12 @@ import { useSignIn } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
 import { Text, TextInput, Button, View, TouchableOpacity } from "react-native";
 import React from "react";
+import { useLocalCredentials } from "@clerk/clerk-expo/local-credentials";
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn();
+  const { hasCredentials, setCredentials, authenticate, biometricType } =
+    useLocalCredentials();
   const router = useRouter();
 
   const [emailAddress, setEmailAddress] = React.useState("");

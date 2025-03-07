@@ -3,11 +3,10 @@ import { View, Text } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { SignedIn, SignedOut } from "@clerk/clerk-expo";
-import Welcome from "../../welcome";
+import Welcome from "../welcome";
 
 console.log("inside tabs layout");
 const TabIcon = ({ focused, icon, title }) => {
-  console.log("inside tab icon");
   return (
     <View className="flex-1 mt-2 items-center ">
       {title === "History" ? (

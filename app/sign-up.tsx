@@ -1,16 +1,19 @@
 import * as React from "react";
 import { Text, TextInput, Button, View, TouchableOpacity } from "react-native";
-import { useSignUp } from "@clerk/clerk-expo";
+import { useSignUp, Clerk } from "@clerk/clerk-expo";
 import { Link, useRouter } from "expo-router";
+import { useClerk } from "@clerk/clerk-react";
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const router = useRouter();
+  const clerk = useClerk();
 
   const [emailAddress, setEmailAddress] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [countryCode, setCountryCode] = React.useState("+91");
   const [phoneNumber, setPhoneNumber] = React.useState("");
+  const [apartmentNumber, setApartmentNumber] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [pendingVerification, setPendingVerification] = React.useState(false);
   const [code, setCode] = React.useState("");
@@ -59,6 +62,11 @@ export default function SignUpScreen() {
       // and redirect the user
       if (signUpAttempt.status === "complete") {
         await setActive({ session: signUpAttempt.createdSessionId });
+        await clerk.user.update({
+          unsafeMetadata: {
+            apartmentNumber: apartmentNumber,
+          },
+        });
         router.replace("/(tabs)");
       } else {
         // If the status is not complete, check why. User may need to
@@ -114,6 +122,17 @@ export default function SignUpScreen() {
           placeholder="Enter email"
           className="mb-6 w-full h-[60] border border-b-black-100 rounded-md p-2 pl-4 pr-4"
           onChangeText={(email) => setEmailAddress(email)}
+        />
+
+        <TextInput
+          autoCapitalize="none"
+          value={apartmentNumber}
+          style={{ fontSize: 16 }}
+          placeholder="Enter apartment number"
+          className="mb-6 w-full h-[60] border border-b-black-100 rounded-md p-2 pl-4 pr-4"
+          onChangeText={(apartmentNumber) =>
+            setApartmentNumber(apartmentNumber)
+          }
         />
 
         <View className="flex flex-row items-center">
